@@ -19,7 +19,7 @@ This application includes a local MCP server that exposes database operations th
 
 - Ruby 3.0+
 - Rails 8.0+
-- PostgreSQL 12+
+- Any databases that are compatible with ActiveRecord
 - MCP-compatible client
 
 ## Installation
