@@ -1,0 +1,25 @@
+#!/usr/bin/env ruby
+
+# MCP Database Server Executable
+# This script starts the MCP server with proper Rails environment loading
+
+# Ensure we're using the correct Ruby version
+ENV['BUNDLE_GEMFILE'] = File.expand_path('../Gemfile', __dir__)
+
+require_relative '../config/environment'
+
+# Load the MCP server
+require_relative '../lib/mcp_server/simple_server'
+
+# Start the server
+begin
+  Rails.logger.info "Initializing MCP Database Server..."
+  
+  server = McpServer::SimpleServer.new
+  server.run
+  
+rescue => e
+  Rails.logger.error "Failed to start MCP Database Server: #{e.message}"
+  Rails.logger.error e.backtrace.join("\n")
+  exit 1
+end

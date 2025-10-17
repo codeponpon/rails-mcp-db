@@ -1,0 +1,39 @@
+# MCP Database Server Configuration
+
+default: &default # Query execution settings
+  query_timeout: 30 # seconds
+  max_query_rows: 1000
+  default_query_limit: 100
+
+  # Pagination settings
+  default_page_size: 50
+  max_page_size: 500
+
+  # Security settings
+  allowed_tables: [] # Empty array means all tables are allowed
+  blocked_tables:
+    - "_prisma_migrations"
+    - "pg_%"
+
+  # Logging settings
+  log_level: "info"
+  log_queries: true
+  log_errors: true
+
+development:
+  <<: *default
+  log_level: "debug"
+  log_queries: true
+
+test:
+  <<: *default
+  log_level: "warn"
+  log_queries: false
+  max_query_rows: 100
+
+production:
+  <<: *default
+  log_level: "info"
+  log_queries: false
+  query_timeout: 60
+  max_query_rows: 5000
