@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/modelcontextprotocol/ruby-sdk.git
-  revision: 944660a8b0e002584da5301dfcaae73daf966b7b
+  revision: 61d48cd6d9229688e161d87c329d67b4d8114674
   specs:
     mcp (0.4.0)
       json-schema (>= 4.1)
